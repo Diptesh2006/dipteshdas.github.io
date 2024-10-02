@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Diptesh Das | Data Science & CSE">
+    <title>Diptesh Das | Personal Webpage</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Diptesh Das</h1>
+            <p>B.Tech in CSE | B.Sc in Data Science | Author | Competitive Coder</p>
+            <nav>
+                <ul>
+                    <li><a href="#about">About Me</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="about" class="section">
+        <div class="container">
+            <h2>About Me</h2>
+            <p>I am an enthusiastic and dedicated student pursuing dual degrees in B.Tech (Computer Science and Engineering) from Vellore Institute of Technology, Vellore and B.Sc (Data Science and Applications) from Indian Institute of Technology, Madras. With a strong passion for data analytics, competitive coding, and problem-solving, I strive to make meaningful contributions in the tech industry.</p>
+        </div>
+    </section>
+
+    <section id="education" class="section">
+        <div class="container">
+            <h2>Education</h2>
+            <ul>
+                <li><strong>B.Sc in Data Science and Applications</strong> – IIT Madras (2024 - Present)</li>
+                <li><strong>B.Tech in Computer Science and Engineering</strong> – VIT Vellore (2024 - Present)</li>
+                <li><strong>ICSE</strong> – The Assembly of God Church School, India (98.8%, AIR 4)</li>
+                <li><strong>ISC</strong> – The Assembly of God Church School, India (96%, AIR 16)</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="experience" class="section">
+        <div class="container">
+            <h2>Experience</h2>
+            <ul>
+                <li><strong>Author</strong> – *Secret to Happiness: A Collection of Unique Inspirational and Motivational Short Stories* (2020)</li>
+                <li><strong>Content Management System Developer</strong> – Jurident, a unit of Valsco Technologies</li>
+                <li><strong>Research Analyst</strong> – MyPerro</li>
+                <li><strong>Financial Analyst</strong> – Collab Junction</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="skills" class="section">
+        <div class="container">
+            <h2>Skills</h2>
+            <ul>
+                <li>Python (Programming Language)</li>
+                <li>Java (Programming Language)</li>
+                <li>Data Analysis</li>
+                <li>Microsoft Office</li>
+                <li>Databases and SQL</li>
+                <li>Power BI (Certified by Microsoft)</li>
+                <li>English Proficiency & Communication</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="container">
+            <h2>Contact</h2>
+            <p>Email: <a href="mailto:ddiptesh15@gmail.com">ddiptesh15@gmail.com</a></p>
+            <p>LinkedIn: <a href="https://www.linkedin.com/in/diptesh-das-63083930a">linkedin.com/in/diptesh-das</a></p>
+            <p>Phone: +91 91631 74655</p>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="container">
+            <h2>Contact Me</h2>
+            <form id="contactForm" onsubmit="return submitForm()">
+                <label for="email">Enter your email address:</label><br>
+                <input type="email" id="email" name="email" placeholder="your-email@example.com" required><br><br>
+                
+                <label for="comments">Comments:</label><br>
+                <textarea id="comments" name="comments" placeholder="Write your comments here..." rows="5" required></textarea><br><br>
+                
+                <input type="submit" value="Submit">
+            </form>
+            <p id="responseMessage"></p>
+        </div>
+    </section>
+    
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Diptesh Das. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function submitForm() {
+            var email = document.getElementById("email").value;
+            var comments = document.getElementById("comments").value;
+            var emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+    
+            if (email.match(emailPattern)) {
+                // Replace with your Web App URL
+                var url = "https://script.google.com/macros/s/AKfycbzPJi66J3vg09RI4JVrOtmritWnEBFpdZw5E9BUQ6TDoFkFzJa1ap6J_q6fSYAvhSRm3A/exec"; // Example: https://script.google.com/macros/s/AKfycbyd.../exec
+    
+                // Send email and comments data to Google Sheets
+                fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: 'email=' + encodeURIComponent(email) + '&comments=' + encodeURIComponent(comments)
+                }).then(response => {
+                    if (response.ok) {
+                        document.getElementById("responseMessage").innerHTML = "Thank you for your comments, " + email;
+                    } else {
+                        document.getElementById("responseMessage").innerHTML = "There was an issue submitting your form.";
+                    }
+                }).catch(error => {
+                    document.getElementById("responseMessage").innerHTML = "Error: " + error;
+                });
+            } else {
+                document.getElementById("responseMessage").innerHTML = "Please enter a valid email address.";
+            }
+    
+            return false; // Prevent the form from submitting traditionally
+        }
+    </script>
+    
+    
+    
+    
+</body>
+</html>
